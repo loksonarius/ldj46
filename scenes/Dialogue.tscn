@@ -47,7 +47,7 @@ position = Vector2( 0, -30 )
 script = ExtResource( 3 )
 
 [node name="Center" type="Node2D" parent="."]
-position = Vector2( 0, 1.88298 )
+position = Vector2( 0, 0.398655 )
 
 [node name="TIE" type="ReferenceRect" parent="Center"]
 margin_left = -60.0
