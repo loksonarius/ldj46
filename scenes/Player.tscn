@@ -90,7 +90,7 @@ ARM_LENGTH = 6
 shape = SubResource( 1 )
 
 [node name="SpriteComposite" type="Node2D" parent="."]
-scale = Vector2( 1.00418, 1.00209 )
+scale = Vector2( 1.01416, 1.00708 )
 
 [node name="Body" type="Sprite" parent="SpriteComposite"]
 light_mask = 4
@@ -109,7 +109,8 @@ occluder = SubResource( 2 )
 texture = ExtResource( 5 )
 texture_scale = 2.0
 energy = 2.0
-range_item_cull_mask = 7
+range_item_cull_mask = 3
+shadow_item_cull_mask = 3
 
 [node name="Lantern" type="Node2D" parent="."]
 

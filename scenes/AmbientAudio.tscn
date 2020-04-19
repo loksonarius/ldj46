@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/HumGenerator.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sounds/bgm.ogg" type="AudioStream" id=3]
+
+[node name="AmbientAudio" type="Node"]
+
+[node name="EffectPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -6.0
+pitch_scale = 0.5
+autoplay = true
+bus = "Pitch"
+
+[node name="HumGenerator" parent="." instance=ExtResource( 2 )]
+volume_db = -6.0
