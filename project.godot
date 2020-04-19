@@ -50,6 +50,16 @@ texture={
 "stream": false,
 "svg/scale": 1.0
 }
+ogg_vorbis={
+"loop": false,
+"loop_offset": 0
+}
+
+[layer_names]
+
+2d_render/layer_1="Ground"
+2d_render/layer_2="Walls"
+2d_render/layer_3="Player"
 
 [physics]
 
@@ -57,4 +67,5 @@ texture={
 
 [rendering]
 
+environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"
