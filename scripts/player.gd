@@ -25,7 +25,7 @@ func _ready():
 	camera.current = true
 
 func _input(event):
-	if event.is_action_pressed("ui_accept"):
+	if event.is_action_pressed("lantern"):
 		lantern_active = !lantern_active
 
 func _process(_delta):
@@ -34,8 +34,8 @@ func _process(_delta):
 	composite.look_at(mouse_pos)
 	collider.look_at(mouse_pos)
 	camera.offset = direction_vec * LOOK_AHEAD
-	var x_dis = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	var y_dis = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	var x_dis = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+	var y_dis = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	input_vel = Vector2(x_dis, y_dis).normalized()
 	if input_vel.length_squared() == 0.0:
 		animationState.travel("Idle")

@@ -36,4 +36,3 @@ light_mask = 0
 [node name="HumGenerator" parent="." instance=ExtResource( 4 )]
 pulse_hz = 80.0
 volume_db = -12.0
-pitch_scale = 1.0
