@@ -89,7 +89,7 @@ script = ExtResource( 3 )
 shape = SubResource( 1 )
 
 [node name="SpriteComposite" type="Node2D" parent="."]
-scale = Vector2( 1.18285, 1.09142 )
+scale = Vector2( 1.12838, 1.06419 )
 
 [node name="Body" type="Sprite" parent="SpriteComposite"]
 light_mask = 4

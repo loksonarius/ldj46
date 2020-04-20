@@ -1,1 +1,3 @@
-# Ludum Dare Jam 46 Submission
+# The Chapel by the Lake
+
+_Jam submission for Ludum Dare 46_

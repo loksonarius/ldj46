@@ -11,7 +11,7 @@ var following = false
 var player = null
 
 func _ready():
-	ambientDark.visible = true
+#	ambientDark.visible = true
 	if player_node_path != null:
 		following = true
 		player = get_node(player_node_path)
