@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
+[ext_resource path="res://sounds/weather.ogg" type="AudioStream" id=1]
 [ext_resource path="res://scenes/HumGenerator.tscn" type="PackedScene" id=2]
 [ext_resource path="res://sounds/bgm.ogg" type="AudioStream" id=3]
 
@@ -7,12 +8,17 @@
 
 [node name="EffectPlayer" type="AudioStreamPlayer" parent="."]
 
+[node name="HumGenerator" parent="." instance=ExtResource( 2 )]
+volume_db = -32.0
+
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = -6.0
-pitch_scale = 0.5
+volume_db = -5.0
+pitch_scale = 0.7
 autoplay = true
 bus = "Pitch"
 
-[node name="HumGenerator" parent="." instance=ExtResource( 2 )]
+[node name="Weather" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
 volume_db = -6.0
+autoplay = true

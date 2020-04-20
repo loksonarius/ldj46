@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/map.gd" type="Script" id=1]
 [ext_resource path="res://scenes/AmbientAudio.tscn" type="PackedScene" id=2]
@@ -8,6 +8,10 @@
 [ext_resource path="res://scenes/Decor/Well.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Decor/Pew.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Dialogue.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Decor/DinnerTable.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Decor/Chair.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/Decor/AltarBack.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/Decor/Altar.tscn" type="PackedScene" id=12]
 
 [node name="MapBase" type="Node2D"]
 script = ExtResource( 1 )
@@ -71,14 +75,38 @@ position = Vector2( 172, -4 )
 position = Vector2( 168, 32 )
 
 [node name="Well" parent="Chapel/Items" instance=ExtResource( 6 )]
-position = Vector2( 240, -214 )
+position = Vector2( 240, -197 )
 scale = Vector2( 1.5, 1.5 )
 
 [node name="LadderHole" parent="Chapel/Items" instance=ExtResource( 5 )]
 position = Vector2( 228, -466 )
 scale = Vector2( 1.2, 1.2 )
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
+[node name="Dinner" type="Node2D" parent="Chapel/Items"]
+
+[node name="DinnerTable" parent="Chapel/Items/Dinner" instance=ExtResource( 9 )]
+position = Vector2( -8, -226 )
+
+[node name="Chair" parent="Chapel/Items/Dinner" instance=ExtResource( 10 )]
+position = Vector2( 22, -216 )
+rotation = 0.415388
+
+[node name="Chair2" parent="Chapel/Items/Dinner" instance=ExtResource( 10 )]
+position = Vector2( -16, -258 )
+rotation = 2.03854
+
+[node name="AltarStage" type="Node2D" parent="Chapel/Items"]
+
+[node name="Altar" parent="Chapel/Items/AltarStage" instance=ExtResource( 12 )]
+position = Vector2( 240, -246 )
+scale = Vector2( 1.2, 1.2 )
+
+[node name="AltarBack" parent="Chapel/Items/AltarStage" instance=ExtResource( 11 )]
+position = Vector2( 240, -312 )
+scale = Vector2( 1.2, 1.2 )
+
+[node name="AmbientDark" type="CanvasModulate" parent="."]
+visible = false
 color = Color( 0, 0, 0, 1 )
 
 [node name="DialogueCanvas" type="CanvasLayer" parent="."]
