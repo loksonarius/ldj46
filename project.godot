@@ -102,6 +102,8 @@ continue_text={
 2d_physics/layer_2="Event"
 2d_render/layer_3="Player"
 2d_physics/layer_3="Player"
+2d_render/layer_4="Decor"
+2d_physics/layer_4="Decor"
 
 [physics]
 

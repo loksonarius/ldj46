@@ -1,6 +1,6 @@
 extends Node2D
 
-export(float, 0.01, 0.5) var TEXT_SPEED = 0.1
+export(float, 0.01, 5.0) var TEXT_SPEED = 0.1
 
 onready var tie = $Center/TIE
 onready var buttonIndicator = $Center/ButtonIndicator

@@ -5,7 +5,7 @@ export(int, 1, 1000) var MIN_SPEED = 2
 export(int, 1, 10000) var ACCELERATION = 50
 export(float, 0.1, 1.0) var FRICTION = 0.8
 export(int, 0, 100) var LOOK_AHEAD = 15
-export(int, 5, 15) var ARM_LENGTH = 10
+export(int, 5, 15) var ARM_LENGTH = 6
 
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")

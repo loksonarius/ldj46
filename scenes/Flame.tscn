@@ -21,6 +21,6 @@ frame_3/delay_sec = 0.0
 [node name="Light" type="Light2D" parent="."]
 texture = SubResource( 1 )
 texture_scale = 1.5
-range_item_cull_mask = 3
+range_item_cull_mask = 11
 shadow_enabled = true
-shadow_item_cull_mask = 7
+shadow_item_cull_mask = 15
