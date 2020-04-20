@@ -3,7 +3,7 @@
 [ext_resource path="res://sprites/player-head.png" type="Texture" id=1]
 [ext_resource path="res://sprites/player-body.png" type="Texture" id=2]
 [ext_resource path="res://scripts/player.gd" type="Script" id=3]
-[ext_resource path="res://scenes/Flame.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Lantern.tscn" type="PackedScene" id=4]
 [ext_resource path="res://sprites/sight.png" type="Texture" id=5]
 [ext_resource path="res://sounds/footsteps/footstep09.ogg" type="AudioStream" id=6]
 [ext_resource path="res://materials/ignore-modulate.tres" type="Material" id=8]
@@ -89,7 +89,7 @@ script = ExtResource( 3 )
 shape = SubResource( 1 )
 
 [node name="SpriteComposite" type="Node2D" parent="."]
-scale = Vector2( 1.07119, 1.03559 )
+scale = Vector2( 1.18285, 1.09142 )
 
 [node name="Body" type="Sprite" parent="SpriteComposite"]
 light_mask = 4
@@ -113,9 +113,7 @@ energy = 2.0
 range_item_cull_mask = 11
 shadow_item_cull_mask = 3
 
-[node name="Lantern" type="Node2D" parent="."]
-
-[node name="Flame" parent="Lantern" instance=ExtResource( 4 )]
+[node name="Lantern" parent="." instance=ExtResource( 4 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Idle = SubResource( 3 )

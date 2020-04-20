@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/outside-wind.ogg-f59c026d4fd82e45dffc7f01fd38c19a.oggstr"
+
+[deps]
+
+source_file="res://sounds/outside-wind.ogg"
+dest_files=[ "res://.import/outside-wind.ogg-f59c026d4fd82e45dffc7f01fd38c19a.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
