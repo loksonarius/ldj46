@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/MapBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/act1.gd" type="Script" id=3]
+[ext_resource path="res://scenes/EventTrigger.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 50, 22 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 64, 108 )
+
+[node name="Act1" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="MapBase" parent="." instance=ExtResource( 1 )]
+player_node_path = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 218, 182 )
+
+[node name="OptionalTriggers" type="Node2D" parent="."]
+
+[node name="OT1" parent="OptionalTriggers" instance=ExtResource( 4 )]
+trigger_name = "ot1"
+
+[node name="Collider" parent="OptionalTriggers/OT1" index="0"]
+position = Vector2( 240, 142 )
+shape = SubResource( 1 )
+
+[node name="OT2" parent="OptionalTriggers" instance=ExtResource( 4 )]
+trigger_name = "ot2"
+
+[node name="Collider" parent="OptionalTriggers/OT2" index="0"]
+position = Vector2( -36, -52 )
+shape = SubResource( 2 )
+[connection signal="fired" from="OptionalTriggers/OT1" to="." method="_on_OT1_fired"]
+[connection signal="fired" from="OptionalTriggers/OT2" to="." method="_on_OT2_fired"]
+
+[editable path="OptionalTriggers/OT1"]
+
+[editable path="OptionalTriggers/OT2"]

@@ -2,11 +2,10 @@
 
 [ext_resource path="res://scripts/event-trigger.gd" type="Script" id=1]
 
-[node name="EventTrigger" type="Node2D"]
-script = ExtResource( 1 )
-
-[node name="Area" type="Area2D" parent="."]
+[node name="EventTrigger" type="Area2D"]
 collision_layer = 2
 collision_mask = 4
+script = ExtResource( 1 )
 
-[node name="Collider" type="CollisionShape2D" parent="Area"]
+[node name="Collider" type="CollisionShape2D" parent="."]
+[connection signal="body_entered" from="." to="." method="on_trigger"]

@@ -5,6 +5,7 @@ export(NodePath) var player_node_path = null
 onready var ambientDark = $AmbientDark
 onready var groundTiles = $Chapel/Ground
 onready var wallTiles = $Chapel/Walls
+onready var doorTiles = $Chapel/Doors
 onready var dialogueBox = $DialogueCanvas/Dialogue
 
 var following = false
@@ -19,3 +20,6 @@ func _ready():
 func _process(_delta):
 	if following:
 		dialogueBox.global_position = player.global_position + Vector2.UP * 30
+
+func toggle_doors():
+	doorTiles.visible = true

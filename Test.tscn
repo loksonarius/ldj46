@@ -10,4 +10,4 @@ player_node_path = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 light_mask = 0
-position = Vector2( 244, 22 )
+position = Vector2( 144, 270 )

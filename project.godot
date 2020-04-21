@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="ldj46"
-run/main_scene="res://Test.tscn"
+run/main_scene="res://acts/Act1.tscn"
 config/icon="res://icon.png"
 
 [display]
