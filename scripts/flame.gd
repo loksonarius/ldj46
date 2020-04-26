@@ -15,7 +15,7 @@ func set_light_scale(value):
 	if !ready:
 		return
 	light_scale = value
-	light.texture_scale = Vector2(value, value)
+	light.texture_scale = value
 
 func set_energy(value):
 	if !ready:

@@ -1,5 +1,7 @@
 extends Node2D
 
+signal done_talking
+
 export(float, 0.01, 5.0) var TEXT_SPEED = 0.07
 
 onready var tie = $Center/TIE
@@ -18,12 +20,13 @@ func _input(event):
 	if event.is_action_pressed("ui_accept") && done:
 		visible = false
 		tie.reset()
+		emit_signal("done_talking")
 
 func reset():
 	tie.reset()
 	tie.set_color(Color.white)
 	visible = false
-	done = false
+	done = true
 	queue = []
 	show_indicator = false
 

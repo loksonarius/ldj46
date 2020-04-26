@@ -20,6 +20,8 @@ onready var lantern = $Lantern
 var current_vel = Vector2.ZERO
 var input_vel = Vector2.ZERO
 var lantern_active = false
+var movement_disabled = false
+var lantern_disabled = false
 
 func _ready():
 	camera.current = true
@@ -34,14 +36,17 @@ func _process(_delta):
 	composite.look_at(mouse_pos)
 	collider.look_at(mouse_pos)
 	camera.offset = direction_vec * LOOK_AHEAD
-	var x_dis = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	var y_dis = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
-	input_vel = Vector2(x_dis, y_dis).normalized()
+	if movement_disabled:
+		input_vel = Vector2.ZERO
+	else:
+		var x_dis = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+		var y_dis = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+		input_vel = Vector2(x_dis, y_dis).normalized()
 	if input_vel.length_squared() == 0.0:
 		animationState.travel("Idle")
 	else:
 		animationState.travel("Walk")
-	if lantern_active:
+	if !lantern_disabled && lantern_active:
 		lantern.position = direction_vec * ARM_LENGTH
 		lantern.visible = true
 	else:

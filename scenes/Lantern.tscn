@@ -10,4 +10,4 @@ scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 2 )
 
 [node name="Flame" parent="." instance=ExtResource( 1 )]
-light_scale = 1.8
+light_scale = 2.2

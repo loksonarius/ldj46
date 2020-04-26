@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/MapBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -11,6 +11,21 @@ extents = Vector2( 50, 22 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 64, 108 )
 
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 32, 7.73753 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 16, 14 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 36, 22 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 14, 2 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 14, 2 )
+
 [node name="Act1" type="Node2D"]
 script = ExtResource( 3 )
 
@@ -18,7 +33,7 @@ script = ExtResource( 3 )
 player_node_path = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 218, 182 )
+position = Vector2( -46, 228 )
 
 [node name="OptionalTriggers" type="Node2D" parent="."]
 
@@ -35,9 +50,58 @@ trigger_name = "ot2"
 [node name="Collider" parent="OptionalTriggers/OT2" index="0"]
 position = Vector2( -36, -52 )
 shape = SubResource( 2 )
+
+[node name="OT3" parent="OptionalTriggers" instance=ExtResource( 4 )]
+
+[node name="Collider" parent="OptionalTriggers/OT3" index="0"]
+position = Vector2( 240, 52 )
+scale = Vector2( 3.8125, 3.87721 )
+shape = SubResource( 3 )
+
+[node name="OT4" parent="OptionalTriggers" instance=ExtResource( 4 )]
+
+[node name="Collider" parent="OptionalTriggers/OT4" index="0"]
+position = Vector2( 136, -296 )
+shape = SubResource( 4 )
+
+[node name="OT5" parent="OptionalTriggers" instance=ExtResource( 4 )]
+
+[node name="Collider" parent="OptionalTriggers/OT5" index="0"]
+position = Vector2( -54, -400 )
+shape = SubResource( 5 )
+
+[node name="StoryTriggers" type="Node2D" parent="."]
+
+[node name="ST1" parent="StoryTriggers" instance=ExtResource( 4 )]
+
+[node name="Collider" parent="StoryTriggers/ST1" index="0"]
+position = Vector2( 8, -374 )
+shape = SubResource( 6 )
+
+[node name="ST2" parent="StoryTriggers" instance=ExtResource( 4 )]
+interactable = true
+
+[node name="Collider" parent="StoryTriggers/ST2" index="0"]
+position = Vector2( 8, -368 )
+shape = SubResource( 7 )
 [connection signal="fired" from="OptionalTriggers/OT1" to="." method="_on_OT1_fired"]
 [connection signal="fired" from="OptionalTriggers/OT2" to="." method="_on_OT2_fired"]
+[connection signal="fired" from="OptionalTriggers/OT3" to="." method="_on_OT3_fired"]
+[connection signal="fired" from="OptionalTriggers/OT4" to="." method="_on_OT4_fired"]
+[connection signal="fired" from="OptionalTriggers/OT5" to="." method="_on_OT5_fired"]
+[connection signal="fired" from="StoryTriggers/ST1" to="." method="_on_ST1_fired"]
+[connection signal="fired" from="StoryTriggers/ST2" to="." method="_on_ST2_fired"]
 
 [editable path="OptionalTriggers/OT1"]
 
 [editable path="OptionalTriggers/OT2"]
+
+[editable path="OptionalTriggers/OT3"]
+
+[editable path="OptionalTriggers/OT4"]
+
+[editable path="OptionalTriggers/OT5"]
+
+[editable path="StoryTriggers/ST1"]
+
+[editable path="StoryTriggers/ST2"]

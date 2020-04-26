@@ -12,7 +12,7 @@ var following = false
 var player = null
 
 func _ready():
-#	ambientDark.visible = true
+	ambientDark.visible = true
 	if player_node_path != null:
 		following = true
 		player = get_node(player_node_path)
@@ -22,4 +22,8 @@ func _process(_delta):
 		dialogueBox.global_position = player.global_position + Vector2.UP * 30
 
 func toggle_doors():
-	doorTiles.visible = true
+	doorTiles.visible = !doorTiles.visible
+	doorTiles.set_collision_layer_bit(0, !doorTiles.get_collision_layer_bit(0))
+
+func _on_Dialogue_done_talking():
+	player.movement_disabled = false
