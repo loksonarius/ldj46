@@ -1,0 +1,145 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://scenes/MapBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/act2.gd" type="Script" id=3]
+[ext_resource path="res://scenes/EventTrigger.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 4 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 16, 46 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 32, 56 )
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 20.0
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 12, 12 )
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 12.1655
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 16, 12 )
+
+[node name="Act2" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="MapBase" parent="." instance=ExtResource( 1 )]
+player_node_path = NodePath("../../Act2/Player")
+
+[node name="Pew" parent="MapBase/Chapel/Items/Hall/Pews" index="0"]
+position = Vector2( 48, -248 )
+rotation = 2.54247
+
+[node name="Pew2" parent="MapBase/Chapel/Items/Hall/Pews" index="1"]
+position = Vector2( 82, -220 )
+rotation = -1.95188
+
+[node name="Pew5" parent="MapBase/Chapel/Items/Hall/Pews" index="4"]
+position = Vector2( 98, -234 )
+rotation = 2.05338
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 218, -402 )
+
+[node name="OptionalTriggers" type="Node2D" parent="."]
+
+[node name="StoryTriggers" type="Node2D" parent="."]
+
+[node name="ST1" parent="StoryTriggers" instance=ExtResource( 4 )]
+interactable = true
+
+[node name="Collider" parent="StoryTriggers/ST1" index="0"]
+position = Vector2( 222, -352 )
+shape = SubResource( 1 )
+
+[node name="ST2" parent="StoryTriggers" instance=ExtResource( 4 )]
+position = Vector2( -112, -16 )
+enabled = false
+
+[node name="Collider" parent="StoryTriggers/ST2" index="0"]
+position = Vector2( 448, -318 )
+shape = SubResource( 2 )
+
+[node name="ST3" parent="StoryTriggers" instance=ExtResource( 4 )]
+position = Vector2( -112, -16 )
+
+[node name="Collider" parent="StoryTriggers/ST3" index="0"]
+position = Vector2( 290, -210 )
+shape = SubResource( 3 )
+
+[node name="ST4" parent="StoryTriggers" instance=ExtResource( 4 )]
+position = Vector2( -112, -16 )
+
+[node name="Collider" parent="StoryTriggers/ST4" index="0"]
+position = Vector2( 204, -204 )
+shape = SubResource( 4 )
+
+[node name="ST5" parent="StoryTriggers" instance=ExtResource( 4 )]
+position = Vector2( -112, -16 )
+interactable = true
+enabled = false
+
+[node name="Collider" parent="StoryTriggers/ST5" index="0"]
+position = Vector2( 246, -286 )
+shape = SubResource( 5 )
+
+[node name="ST6" parent="StoryTriggers" instance=ExtResource( 4 )]
+position = Vector2( -112, -16 )
+interactable = true
+enabled = false
+
+[node name="Collider" parent="StoryTriggers/ST6" index="0"]
+position = Vector2( 370, -294 )
+shape = SubResource( 6 )
+
+[node name="ST7" parent="StoryTriggers" instance=ExtResource( 4 )]
+position = Vector2( -112, -16 )
+interactable = true
+enabled = false
+
+[node name="Collider" parent="StoryTriggers/ST7" index="0"]
+position = Vector2( 360, -368 )
+shape = SubResource( 7 )
+
+[node name="ST8" parent="StoryTriggers" instance=ExtResource( 4 )]
+position = Vector2( -112, -16 )
+interactable = true
+enabled = false
+
+[node name="Collider" parent="StoryTriggers/ST8" index="0"]
+position = Vector2( 402, -406 )
+shape = SubResource( 8 )
+[connection signal="fired" from="StoryTriggers/ST1" to="." method="_on_ST1_fired"]
+[connection signal="fired" from="StoryTriggers/ST2" to="." method="_on_ST2_fired"]
+[connection signal="fired" from="StoryTriggers/ST3" to="." method="_on_ST3_fired"]
+[connection signal="fired" from="StoryTriggers/ST4" to="." method="_on_ST4_fired"]
+[connection signal="fired" from="StoryTriggers/ST5" to="." method="_on_ST5_fired"]
+[connection signal="fired" from="StoryTriggers/ST6" to="." method="_on_ST6_fired"]
+[connection signal="fired" from="StoryTriggers/ST7" to="." method="_on_ST7_fired"]
+[connection signal="fired" from="StoryTriggers/ST8" to="." method="_on_ST8_fired"]
+
+[editable path="MapBase"]
+
+[editable path="StoryTriggers/ST1"]
+
+[editable path="StoryTriggers/ST2"]
+
+[editable path="StoryTriggers/ST3"]
+
+[editable path="StoryTriggers/ST4"]
+
+[editable path="StoryTriggers/ST5"]
+
+[editable path="StoryTriggers/ST6"]
+
+[editable path="StoryTriggers/ST7"]
+
+[editable path="StoryTriggers/ST8"]

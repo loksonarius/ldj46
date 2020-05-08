@@ -1,0 +1,92 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://fonts/menu_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scripts/menu.gd" type="Script" id=2]
+[ext_resource path="res://scenes/HumGenerator.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "FadeIn"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fade:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "FadeOut"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fade:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[node name="MenuScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Contents" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+margin_top = 40.0
+margin_bottom = 27.0
+size_flags_vertical = 3
+custom_constants/separation = 60
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Contents"]
+margin_left = 76.0
+margin_right = 243.0
+margin_bottom = 63.0
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 1 )
+text = "A Chapel
+in the Woods"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="StartButon" type="Button" parent="Contents"]
+margin_top = 123.0
+margin_right = 320.0
+margin_bottom = 159.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Start"
+flat = true
+
+[node name="Fade" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/FadeIn = SubResource( 1 )
+anims/FadeOut = SubResource( 2 )
+
+[node name="HumGenerator" parent="." instance=ExtResource( 3 )]
+[connection signal="pressed" from="Contents/StartButon" to="." method="_on_StartButon_pressed"]

@@ -15,6 +15,7 @@ onready var composite = $SpriteComposite
 onready var occluder = $Occluder
 onready var head = $SpriteComposite/Head
 onready var body = $SpriteComposite/Body
+onready var sight = $Sight
 onready var lantern = $Lantern
 
 var current_vel = Vector2.ZERO
@@ -22,6 +23,7 @@ var input_vel = Vector2.ZERO
 var lantern_active = false
 var movement_disabled = false
 var lantern_disabled = false
+var view_disabled = true
 
 func _ready():
 	camera.current = true
@@ -51,6 +53,7 @@ func _process(_delta):
 		lantern.visible = true
 	else:
 		lantern.visible = false
+	sight.visible = !view_disabled
 
 func _physics_process(_delta):
 	if input_vel.length_squared() == 0.0:

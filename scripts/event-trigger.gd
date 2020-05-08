@@ -12,17 +12,14 @@ export(bool) var enabled = true
 onready var area = $Collider
 onready var has_fired = false
 
-var active = false setget set_active
-
-func set_active(value):
-	active = value
+var active = false
 
 func fire():
 	emit_signal("fired", trigger_name)
 	has_fired = true
 
 func _process(_delta):
-	if active:
+	if active && enabled:
 		if interactable:
 			if !fire_once || (fire_once && !has_fired):
 				if Input.is_action_pressed("interact"):

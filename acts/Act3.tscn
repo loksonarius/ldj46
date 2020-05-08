@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/MapBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/act3.gd" type="Script" id=3]
+[ext_resource path="res://scenes/EventTrigger.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 8.0
+
+[node name="Act3" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="MapBase" parent="." instance=ExtResource( 1 )]
+player_node_path = NodePath("../../Act3/Player")
+
+[node name="Lantern" parent="MapBase/Chapel/Items/Bedroom/LadderHole" index="2"]
+position = Vector2( 0, 12 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 276, -408 )
+
+[node name="OptionalTriggers" type="Node2D" parent="."]
+
+[node name="StoryTriggers" type="Node2D" parent="."]
+
+[node name="ST1" parent="StoryTriggers" instance=ExtResource( 4 )]
+interactable = true
+
+[node name="Collider" parent="StoryTriggers/ST1" index="0"]
+position = Vector2( 228, -448 )
+shape = SubResource( 1 )
+[connection signal="fired" from="StoryTriggers/ST1" to="." method="_on_ST1_fired"]
+
+[editable path="MapBase"]
+
+[editable path="StoryTriggers/ST1"]

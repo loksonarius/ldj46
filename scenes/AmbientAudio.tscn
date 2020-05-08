@@ -1,12 +1,20 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://sounds/weather.ogg" type="AudioStream" id=1]
 [ext_resource path="res://scenes/HumGenerator.tscn" type="PackedScene" id=2]
 [ext_resource path="res://sounds/bgm.ogg" type="AudioStream" id=3]
+[ext_resource path="res://sounds/footsteps/footstep03.ogg" type="AudioStream" id=4]
+[ext_resource path="res://sounds/blow.ogg" type="AudioStream" id=5]
 
 [node name="AmbientAudio" type="Node"]
 
-[node name="EffectPlayer" type="AudioStreamPlayer" parent="."]
+[node name="FootstepsEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -24.0
+pitch_scale = 0.3
+
+[node name="BlowEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
 
 [node name="HumGenerator" parent="." instance=ExtResource( 2 )]
 volume_db = -32.0

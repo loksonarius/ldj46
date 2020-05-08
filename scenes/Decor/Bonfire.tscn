@@ -34,3 +34,5 @@ shape = SubResource( 4 )
 
 [node name="Flame" parent="." instance=ExtResource( 3 )]
 visible = false
+light_scale = 3.0
+energy = 1.5
