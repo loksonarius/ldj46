@@ -1,11 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://fonts/menu_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scripts/menu.gd" type="Script" id=2]
 [ext_resource path="res://scenes/HumGenerator.tscn" type="PackedScene" id=3]
 
-[sub_resource type="Animation" id=1]
-resource_name = "FadeIn"
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="Animation" id=4]
 step = 0.25
 tracks/0/type = "value"
 tracks/0/path = NodePath("Fade:color")
@@ -20,8 +25,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "FadeOut"
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Fade:color")
 tracks/0/interp = 2
@@ -65,11 +69,14 @@ align = 1
 valign = 1
 uppercase = true
 
-[node name="StartButon" type="Button" parent="Contents"]
+[node name="StartButton" type="Button" parent="Contents"]
 margin_top = 123.0
 margin_right = 320.0
 margin_bottom = 159.0
 size_flags_horizontal = 3
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
 custom_fonts/font = ExtResource( 1 )
 text = "Start"
 flat = true
@@ -85,8 +92,8 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/FadeIn = SubResource( 1 )
-anims/FadeOut = SubResource( 2 )
+anims/FadeIn = SubResource( 4 )
+anims/FadeOut = SubResource( 5 )
 
 [node name="HumGenerator" parent="." instance=ExtResource( 3 )]
-[connection signal="pressed" from="Contents/StartButon" to="." method="_on_StartButon_pressed"]
+[connection signal="pressed" from="Contents/StartButton" to="." method="_on_StartButton_pressed"]

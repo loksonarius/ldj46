@@ -5,33 +5,20 @@ onready var dialogue = $MapBase/DialogueCanvas/Dialogue
 onready var player = $Player
 
 func _ready():
+	map.wire_events($StoryTriggers.get_children())
+	map.wire_events($OptionalTriggers.get_children())
 	player.lantern_active = true
-
-func _on_OT1_fired(_trigger):
-	dialogue.say("Boarded shut. I'll have to go around.")
-
-func _on_OT2_fired(_trigger):
-	dialogue.say("The people here are truly damned... such an impressive structure wasted...")
-
-func _on_OT3_fired(_trigger):
-	dialogue.say("What in the hell? Was a battle fought here?")
-
-func _on_OT4_fired(_trigger):
-	dialogue.say("What could a chapel need to store in such excess?")
-
-func _on_OT5_fired(_trigger):
-	dialogue.say("A service entrance! Maybe I'll have more luck here...")
 
 func _on_ST1_fired(_trigger):
 	player.movement_disabled = true
-	dialogue.say("*knock knock*\n...\n...\nIs this place actually abandoned? I can't wait around with this rain...\nI'll let myself in.")
+	dialogue.say("*knock knock*\n...\n...\nIs this place actually abandoned?\nThis rain... guess I'll be letting myself in.")
 	yield(dialogue, "done_talking")
 	$StoryTriggers/ST2.enabled = true
 	player.movement_disabled = false
 
 func _on_ST2_fired(_trigger):
 	map.remove_doors()
-	dialogue.say("So stagnant...\nand that furnace hasn't been lit in ages....\nNevermind abandoned, this could be a crypt!\n")
+	dialogue.say("So stagnant...\nThat oven is molded over....\nNevermind abandoned, this could be a crypt!")
 
 func _on_ST3_fired(_trigger):
 	dialogue.say("An endless well. Inside the main hall? I wonder how many prayer boys have fallen down this hole?")
@@ -39,7 +26,7 @@ func _on_ST3_fired(_trigger):
 func _on_ST4_fired(_trigger):
 	$StoryTriggers/ST4.enabled = false
 	$StoryTriggers/ST6.enabled = true
-	dialogue.say("This basket will be a perfect fire pit. I'll need logs...\nAh, the furnace!")
+	dialogue.say("This basket will be a perfect fire pit. I'll need logs...\nAh, the oven!")
 
 func _on_ST5_fired(_trigger):
 	player.movement_disabled = true
@@ -84,3 +71,30 @@ func _on_ST10_fired(_trigger):
 	player.visible = false
 	yield(get_tree().create_timer(3), "timeout")
 	assert(get_tree().change_scene("res://acts/Act2.tscn") == OK)
+	
+func _on_ST11_fired(_trigger):
+	dialogue.say("Let's see what bedding this place has to offer...")
+
+func _on_OT1_fired(_trigger):
+	dialogue.say("Boarded shut. I'll have to go around.")
+
+func _on_OT2_fired(_trigger):
+	dialogue.say("The people here are truly damned... such an impressive structure wasted...")
+
+func _on_OT3_fired(_trigger):
+	dialogue.say("What in the hell is this for -- an incursion? What seige required this?")
+
+func _on_OT4_fired(_trigger):
+	dialogue.say("What could a chapel need to store in such excess?")
+
+func _on_OT5_fired(_trigger):
+	dialogue.say("A service entrance! Maybe I'll have more luck here...")
+
+func _on_OT6_fired(_trigger):
+	dialogue.say("Books, scripture, candles, ornaments... lavish.")
+
+func _on_OT7_fired(_trigger):
+	player.movement_disabled = true
+	dialogue.say("Oh, a basement?\nWell there's no way I'll be going down there...\nSurely haunted.")
+	yield(dialogue, "done_talking")
+	player.movement_disabled = false

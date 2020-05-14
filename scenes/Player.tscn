@@ -85,12 +85,13 @@ graph_offset = Vector2( -1697.79, -216.717 )
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 4
 script = ExtResource( 3 )
+MAX_SPEED = 20
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="SpriteComposite" type="Node2D" parent="."]
-scale = Vector2( 1.10892, 1.05446 )
+scale = Vector2( 1.1733, 1.08665 )
 
 [node name="Body" type="Sprite" parent="SpriteComposite"]
 light_mask = 4

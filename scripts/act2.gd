@@ -8,6 +8,8 @@ onready var player = $Player
 var kindling_found = 0
 
 func _ready():
+	map.wire_events($StoryTriggers.get_children())
+	map.wire_events($OptionalTriggers.get_children())
 	player.movement_disabled = true
 	player.lantern_disabled = true
 	map.toggle_lantern2()
@@ -26,7 +28,7 @@ func _on_ST1_fired(_trigger):
 	dialogue.say("Alright, back to those barrels near the oven...")
 
 func _on_ST2_fired(_trigger):
-	dialogue.say("Is that where I left the lantern before resting...?")
+	dialogue.say("...\nIs that really where I left my lantern...?")
 
 func _on_ST3_fired(_trigger):
 	player.movement_disabled = true
@@ -38,6 +40,8 @@ func _on_ST4_fired(_trigger):
 	player.movement_disabled = true
 	$StoryTriggers/ST5.enabled = true
 	$StoryTriggers/ST6.enabled = true
+	$OptionalTriggers/OT4.enabled = true
+	$OptionalTriggers/OT6.enabled = true
 	dialogue.say("...\n..\nNo no no, this isn't...\nI mean... how!?\nAlright, someone's definitely messing with me here. No more shut-eye.\n...\nI'll still need to keep the fire alive, though. I'll need logs and kindling.\nTime to forage around.")
 	yield(dialogue, "done_talking")
 	player.movement_disabled = false
@@ -80,3 +84,39 @@ func _on_ST8_fired(_trigger):
 	player.visible = false
 	yield(get_tree().create_timer(3), "timeout")
 	assert(get_tree().change_scene("res://acts/Act3.tscn") == OK)
+
+func _on_OT1_fired(_trigger):
+	player.movement_disabled = true
+	dialogue.say("Just pamphlets in here...")
+	yield(dialogue, "done_talking")
+	player.movement_disabled = false
+
+func _on_OT2_fired(_trigger):
+	player.movement_disabled = true
+	dialogue.say("Flasks? What's this muck?\nHah, maybe it's some fine pope blood.")
+	yield(dialogue, "done_talking")
+	player.movement_disabled = false
+
+func _on_OT3_fired(_trigger):
+	player.movement_disabled = true
+	dialogue.say("Empty.")
+	yield(dialogue, "done_talking")
+	player.movement_disabled = false
+
+func _on_OT4_fired(_trigger):
+	player.movement_disabled = true
+	dialogue.say("Knowing there's someone else around...\nThis basement...\nMaybe this place really is a crypt.")
+	yield(dialogue, "done_talking")
+	player.movement_disabled = false
+	
+func _on_OT5_fired(_trigger):
+	player.movement_disabled = true
+	dialogue.say("A very lame library.\nI'm sure a few missing scripts and books won't be noticed...")
+	yield(dialogue, "done_talking")
+	player.movement_disabled = false
+	
+func _on_OT6_fired(_trigger):
+	player.movement_disabled = true
+	dialogue.say("And after trapping the hapless scholar and future meal\nGrendel dove into the well to lie in waiting...\n...\nHah\n...\nUnless?")
+	yield(dialogue, "done_talking")
+	player.movement_disabled = false

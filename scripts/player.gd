@@ -17,6 +17,7 @@ onready var head = $SpriteComposite/Head
 onready var body = $SpriteComposite/Body
 onready var sight = $Sight
 onready var lantern = $Lantern
+onready var lanternSprite = $Lantern/Sprite
 
 var current_vel = Vector2.ZERO
 var input_vel = Vector2.ZERO
@@ -37,6 +38,7 @@ func _process(_delta):
 	var direction_vec = to_local(mouse_pos).normalized()
 	composite.look_at(mouse_pos)
 	collider.look_at(mouse_pos)
+	lanternSprite.look_at(mouse_pos)
 	camera.offset = direction_vec * LOOK_AHEAD
 	if movement_disabled:
 		input_vel = Vector2.ZERO

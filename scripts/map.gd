@@ -7,6 +7,7 @@ onready var groundTiles = $Chapel/Ground
 onready var wallTiles = $Chapel/Walls
 onready var doorTiles = $Chapel/Doors
 onready var dialogueBox = $DialogueCanvas/Dialogue
+onready var interactPrompt = $DialogueCanvas/InteractPrompt
 onready var lantern1 = $Chapel/Items/Bedroom/BedSide/Barrel4/Lantern
 onready var lantern2 = $Chapel/Items/Bedroom/BedSide/Barrel3/Lantern
 onready var lantern3 = $Chapel/Items/Bedroom/LadderHole/Lantern
@@ -17,6 +18,7 @@ var player = null
 
 func _ready():
 	ambientDark.visible = true
+	interactPrompt.visible = false
 	if player_node_path != null:
 		following = true
 		player = get_node(player_node_path)
@@ -24,6 +26,7 @@ func _ready():
 func _process(_delta):
 	if following:
 		dialogueBox.global_position = player.global_position + Vector2.UP * 30
+		interactPrompt.global_position = player.global_position
 
 func remove_doors():
 	doorTiles.queue_free()
@@ -46,3 +49,15 @@ func disable_lights():
 	lantern2.visible = false
 	lantern3.visible = false
 	player.lantern_disabled = true
+
+func wire_events(event_triggers):
+	for node in event_triggers:
+		if node.interactable:
+			node.connect("interactable", self, "display_prompt")
+			node.connect("uninteractable", self, "hide_prompt")
+
+func display_prompt():
+	interactPrompt.visible = true
+
+func hide_prompt():
+	interactPrompt.visible = false

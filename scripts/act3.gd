@@ -9,6 +9,8 @@ onready var footsteps = $MapBase/AmbientAudio/FootstepsEffect
 onready var blow = $MapBase/AmbientAudio/BlowEffect
 
 func _ready():
+	map.wire_events($StoryTriggers.get_children())
+	map.wire_events($OptionalTriggers.get_children())
 	player.movement_disabled = true
 	player.lantern_disabled = true
 	map.toggle_lantern3()

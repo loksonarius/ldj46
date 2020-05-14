@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://scripts/map.gd" type="Script" id=1]
 [ext_resource path="res://scenes/AmbientAudio.tscn" type="PackedScene" id=2]
@@ -20,11 +20,32 @@
 [ext_resource path="res://scenes/Decor/Furnace.tscn" type="PackedScene" id=18]
 [ext_resource path="res://sprites/grass-tile.png" type="Texture" id=19]
 [ext_resource path="res://scenes/Lantern.tscn" type="PackedScene" id=20]
+[ext_resource path="res://sprites/button-press.png" type="Texture" id=21]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 21 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 21 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 21 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 4.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 8, 580 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 508, 8 )
 
 [node name="MapBase" type="Node2D"]
@@ -236,9 +257,11 @@ position = Vector2( 360, -270 )
 
 [node name="Chair3" parent="Chapel/Items/Hall/Seating" instance=ExtResource( 10 )]
 position = Vector2( 360, -314 )
+rotation = 3.14159
 
 [node name="Chair4" parent="Chapel/Items/Hall/Seating" instance=ExtResource( 10 )]
 position = Vector2( 384, -314 )
+rotation = 3.14159
 
 [node name="Kitchen" type="Node2D" parent="Chapel/Items"]
 
@@ -308,23 +331,32 @@ follow_viewport_enable = true
 
 [node name="Dialogue" parent="DialogueCanvas" instance=ExtResource( 8 )]
 
+[node name="InteractPrompt" type="Node2D" parent="DialogueCanvas"]
+
+[node name="Image" type="AnimatedSprite" parent="DialogueCanvas/InteractPrompt"]
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 4 )
+frame = 1
+playing = true
+offset = Vector2( 0, -24 )
+
 [node name="Bounds" type="StaticBody2D" parent="."]
 
 [node name="LeftBound" type="CollisionShape2D" parent="Bounds"]
 position = Vector2( -354, -64 )
-shape = SubResource( 1 )
+shape = SubResource( 5 )
 
 [node name="RightBound" type="CollisionShape2D" parent="Bounds"]
 position = Vector2( 592, -60 )
-shape = SubResource( 1 )
+shape = SubResource( 5 )
 
 [node name="TopBound" type="CollisionShape2D" parent="Bounds"]
 position = Vector2( 134, -588 )
-shape = SubResource( 2 )
+shape = SubResource( 6 )
 
 [node name="BottomBound" type="CollisionShape2D" parent="Bounds"]
 position = Vector2( 128, 388 )
-shape = SubResource( 2 )
+shape = SubResource( 6 )
 
 [editable path="Chapel/Items/Bedroom/BedSide/Barrel3/Lantern"]
 

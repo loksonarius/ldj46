@@ -17,6 +17,9 @@ player_node_path = NodePath("../../Act3/Player")
 [node name="Lantern" parent="MapBase/Chapel/Items/Bedroom/LadderHole" index="2"]
 position = Vector2( 0, 12 )
 
+[node name="Image" parent="MapBase/DialogueCanvas/InteractPrompt" index="0"]
+frame = 2
+
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 276, -408 )
 

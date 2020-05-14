@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/MapBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -21,33 +21,42 @@ extents = Vector2( 16, 14 )
 extents = Vector2( 36, 22 )
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 14, 2 )
+extents = Vector2( 46, 30 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 14, 2 )
+extents = Vector2( 24, 20 )
 
-[sub_resource type="CircleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 14, 4 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 14, 4 )
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 16, 24 )
+
+[sub_resource type="CircleShape2D" id=10]
 radius = 40.0
 
-[sub_resource type="CircleShape2D" id=9]
+[sub_resource type="CircleShape2D" id=11]
 radius = 22.0907
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 18, 20 )
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 14, 30 )
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 18, 14 )
 
-[sub_resource type="CircleShape2D" id=13]
+[sub_resource type="CircleShape2D" id=15]
 radius = 14.1421
 
-[sub_resource type="CircleShape2D" id=14]
+[sub_resource type="CircleShape2D" id=16]
 radius = 12.0
 
-[sub_resource type="RectangleShape2D" id=15]
+[sub_resource type="RectangleShape2D" id=17]
 extents = Vector2( 14, 20 )
 
 [node name="Act1" type="Node2D"]
@@ -57,7 +66,7 @@ script = ExtResource( 3 )
 player_node_path = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -10, 226 )
+position = Vector2( -28, 228 )
 
 [node name="OptionalTriggers" type="Node2D" parent="."]
 
@@ -94,13 +103,25 @@ shape = SubResource( 4 )
 position = Vector2( -54, -400 )
 shape = SubResource( 5 )
 
+[node name="OT6" parent="OptionalTriggers" instance=ExtResource( 4 )]
+
+[node name="Collider" parent="OptionalTriggers/OT6" index="0"]
+position = Vector2( 240, -276 )
+shape = SubResource( 6 )
+
+[node name="OT7" parent="OptionalTriggers" instance=ExtResource( 4 )]
+
+[node name="Collider" parent="OptionalTriggers/OT7" index="0"]
+position = Vector2( 228, -460 )
+shape = SubResource( 7 )
+
 [node name="StoryTriggers" type="Node2D" parent="."]
 
 [node name="ST1" parent="StoryTriggers" instance=ExtResource( 4 )]
 
 [node name="Collider" parent="StoryTriggers/ST1" index="0"]
-position = Vector2( 8, -374 )
-shape = SubResource( 6 )
+position = Vector2( 8, -376 )
+shape = SubResource( 8 )
 
 [node name="ST2" parent="StoryTriggers" instance=ExtResource( 4 )]
 interactable = true
@@ -108,27 +129,32 @@ enabled = false
 
 [node name="Collider" parent="StoryTriggers/ST2" index="0"]
 position = Vector2( 8, -368 )
-shape = SubResource( 7 )
+shape = SubResource( 9 )
+
+[node name="ST11" parent="StoryTriggers" instance=ExtResource( 4 )]
+
+[node name="Collider" parent="StoryTriggers/ST11" index="0"]
+position = Vector2( 60, -254 )
+shape = SubResource( 18 )
 
 [node name="ST3" parent="StoryTriggers" instance=ExtResource( 4 )]
 
 [node name="Collider" parent="StoryTriggers/ST3" index="0"]
 position = Vector2( 240, -198 )
-shape = SubResource( 8 )
+shape = SubResource( 10 )
 
 [node name="ST4" parent="StoryTriggers" instance=ExtResource( 4 )]
 
 [node name="Collider" parent="StoryTriggers/ST4" index="0"]
 position = Vector2( 248, -384 )
-shape = SubResource( 9 )
+shape = SubResource( 11 )
 
 [node name="ST5" parent="StoryTriggers" instance=ExtResource( 4 )]
 interactable = true
-enabled = false
 
 [node name="Collider" parent="StoryTriggers/ST5" index="0"]
 position = Vector2( 200, -402 )
-shape = SubResource( 10 )
+shape = SubResource( 12 )
 
 [node name="ST6" parent="StoryTriggers" instance=ExtResource( 4 )]
 interactable = true
@@ -136,7 +162,7 @@ enabled = false
 
 [node name="Collider" parent="StoryTriggers/ST6" index="0"]
 position = Vector2( -22, -308 )
-shape = SubResource( 11 )
+shape = SubResource( 13 )
 
 [node name="ST7" parent="StoryTriggers" instance=ExtResource( 4 )]
 interactable = true
@@ -144,7 +170,7 @@ enabled = false
 
 [node name="Collider" parent="StoryTriggers/ST7" index="0"]
 position = Vector2( 40, -312 )
-shape = SubResource( 12 )
+shape = SubResource( 14 )
 
 [node name="ST8" parent="StoryTriggers" instance=ExtResource( 4 )]
 interactable = true
@@ -152,7 +178,7 @@ enabled = false
 
 [node name="Collider" parent="StoryTriggers/ST8" index="0"]
 position = Vector2( 248, -384 )
-shape = SubResource( 13 )
+shape = SubResource( 15 )
 
 [node name="ST9" parent="StoryTriggers" instance=ExtResource( 4 )]
 interactable = true
@@ -160,21 +186,25 @@ enabled = false
 
 [node name="Collider" parent="StoryTriggers/ST9" index="0"]
 position = Vector2( 216, -368 )
-shape = SubResource( 14 )
+shape = SubResource( 16 )
 
 [node name="ST10" parent="StoryTriggers" instance=ExtResource( 4 )]
 interactable = true
+enabled = false
 
 [node name="Collider" parent="StoryTriggers/ST10" index="0"]
 position = Vector2( 214, -402 )
-shape = SubResource( 15 )
+shape = SubResource( 17 )
 [connection signal="fired" from="OptionalTriggers/OT1" to="." method="_on_OT1_fired"]
 [connection signal="fired" from="OptionalTriggers/OT2" to="." method="_on_OT2_fired"]
 [connection signal="fired" from="OptionalTriggers/OT3" to="." method="_on_OT3_fired"]
 [connection signal="fired" from="OptionalTriggers/OT4" to="." method="_on_OT4_fired"]
 [connection signal="fired" from="OptionalTriggers/OT5" to="." method="_on_OT5_fired"]
+[connection signal="fired" from="OptionalTriggers/OT6" to="." method="_on_OT6_fired"]
+[connection signal="fired" from="OptionalTriggers/OT7" to="." method="_on_OT7_fired"]
 [connection signal="fired" from="StoryTriggers/ST1" to="." method="_on_ST1_fired"]
 [connection signal="fired" from="StoryTriggers/ST2" to="." method="_on_ST2_fired"]
+[connection signal="fired" from="StoryTriggers/ST11" to="." method="_on_ST11_fired"]
 [connection signal="fired" from="StoryTriggers/ST3" to="." method="_on_ST3_fired"]
 [connection signal="fired" from="StoryTriggers/ST4" to="." method="_on_ST4_fired"]
 [connection signal="fired" from="StoryTriggers/ST5" to="." method="_on_ST5_fired"]
@@ -194,9 +224,15 @@ shape = SubResource( 15 )
 
 [editable path="OptionalTriggers/OT5"]
 
+[editable path="OptionalTriggers/OT6"]
+
+[editable path="OptionalTriggers/OT7"]
+
 [editable path="StoryTriggers/ST1"]
 
 [editable path="StoryTriggers/ST2"]
+
+[editable path="StoryTriggers/ST11"]
 
 [editable path="StoryTriggers/ST3"]
 

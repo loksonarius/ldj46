@@ -17,7 +17,7 @@ _global_script_class_icons={
 
 config/name="A Chapel in the Woods"
 run/main_scene="res://acts/MenuScreen.tscn"
-config/icon="res://icon.png"
+config/icon="res://Icon.png"
 
 [display]
 
